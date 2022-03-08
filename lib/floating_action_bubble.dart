@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class Bubble {
   const Bubble(
-      {required this.title,
-      required this.titleStyle,
-      required this.iconColor,
-      required this.bubbleColor,
-      required this.icon,
-      required this.onPress});
+      {this.title,
+      this.titleStyle,
+      this.iconColor,
+      this.bubbleColor,
+      this.icon,
+      this.onPress});
 
-  final IconData icon;
+  final Widget icon;
   final Color iconColor;
   final Color bubbleColor;
   final void Function() onPress;
@@ -18,7 +18,7 @@ class Bubble {
 }
 
 class BubbleMenu extends StatelessWidget {
-  const BubbleMenu(this.item, {Key? key}) : super(key: key);
+  const BubbleMenu(this.item, {Key key}) : super(key: key);
 
   final Bubble item;
 
@@ -37,10 +37,7 @@ class BubbleMenu extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Icon(
-            item.icon,
-            color: item.iconColor,
-          ),
+          item.icon,
           const SizedBox(
             width: 10.0,
           ),
@@ -62,12 +59,12 @@ class _DefaultHeroTag {
 
 class FloatingActionBubble extends AnimatedWidget {
   const FloatingActionBubble({
-    Key? key,
-    required this.items,
-    required this.onPress,
-    required this.iconColor,
-    required this.backGroundColor,
-    required Animation animation,
+    Key key,
+    this.items,
+    this.onPress,
+    this.iconColor,
+    this.backGroundColor,
+    Animation animation,
     this.herotag,
     this.iconData,
     this.animatedIconData,
@@ -77,9 +74,9 @@ class FloatingActionBubble extends AnimatedWidget {
 
   final List<Bubble> items;
   final void Function() onPress;
-  final AnimatedIconData? animatedIconData;
-  final Object? herotag;
-  final IconData? iconData;
+  final AnimatedIconData animatedIconData;
+  final Object herotag;
+  final IconData iconData;
   final Color iconColor;
   final Color backGroundColor;
 
@@ -138,7 +135,7 @@ class FloatingActionBubble extends AnimatedWidget {
           // only 1 can be null at the time
           child: iconData == null
               ? AnimatedIcon(
-                  icon: animatedIconData!,
+                  icon: animatedIconData,
                   progress: _animation,
                   color: iconColor,
                 )

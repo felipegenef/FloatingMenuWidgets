@@ -76,7 +76,7 @@ class FloatingActionBubble extends AnimatedWidget {
   final void Function() onPress;
   final AnimatedIconData animatedIconData;
   final Object herotag;
-  final IconData iconData;
+  final Widget iconData;
   final Color iconColor;
   final Color backGroundColor;
 
@@ -139,10 +139,7 @@ class FloatingActionBubble extends AnimatedWidget {
                   progress: _animation,
                   color: iconColor,
                 )
-              : Icon(
-                  iconData,
-                  color: iconColor,
-                ),
+              : iconData,
           onPressed: onPress,
         ),
       ],
